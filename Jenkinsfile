@@ -29,7 +29,7 @@ pipeline {
         stage('SonarQube Analysis') {
             steps {
                 withSonarQubeEnv('SonarQube') { // Pass the name of your SonarQube server instance
-                    sh "${mvn}/bin/mvn clean verify sonar:sonar -Dsonar.projectKey=jenkins-tuto -Dsonar.projectName='jenkins-tuto'"
+                    sh "${mvn}/bin/mvn clean verify sonar:sonar -Dsonar.projectKey=achat -Dsonar.projectName='achat'"
                 }
             }
         }
