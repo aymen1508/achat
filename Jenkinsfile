@@ -27,8 +27,10 @@ pipeline {
             }
         }
         stage('SonarQube Analysis') {
-            withSonarQubeEnv() {
-                sh "${mvn}/bin/mvn clean verify sonar:sonar -Dsonar.projectKey=jenkins-tuto -Dsonar.projectName='jenkins-tuto'"
+            steps {
+                withSonarQubeEnv('SonarQube') { // Pass the name of your SonarQube server instance
+                    sh "${mvn}/bin/mvn clean verify sonar:sonar -Dsonar.projectKey=jenkins-tuto -Dsonar.projectName='jenkins-tuto'"
+                }
             }
         }
     }
