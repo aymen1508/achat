@@ -29,7 +29,7 @@ pipeline {
         stage('SonarQube Analysis') {
             steps {
                 withSonarQubeEnv('sonar-base') { // Pass the name of your SonarQube server instance
-                    sh "mvn clean verify sonar:sonar -Dsonar.projectKey=achat Dsonar.projectName='achat' -Dsonar.host.url=http://sonarqube:9000 -Dsonar.token=sqp_1a12dc0afb15e8b02aa2176a314f919d2ad51d53 "                
+                    sh "mvn clean verify sonar:sonar -Dsonar.projectKey=achat -Dsonar.projectName='achat' -Dsonar.host.url=http://sonarqube:9000 -Dsonar.token=sqp_1a12dc0afb15e8b02aa2176a314f919d2ad51d53 "                
                 }
             }
         }
