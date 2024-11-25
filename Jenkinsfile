@@ -30,6 +30,7 @@ pipeline {
             steps {
                 withSonarQubeEnv('SonarQube') { // Pass the name of your SonarQube server instance
                     sh "${mvn}/bin/mvn clean verify sonar:sonar -Dsonar.projectKey=achat -Dsonar.projectName='achat'"
+                    
                 }
             }
         }
