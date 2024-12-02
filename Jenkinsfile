@@ -5,7 +5,6 @@ pipeline {
         // Define environment variables
         SONARQUBE_SCANNER_HOME = tool 'SonarScanner' // Use the name of your SonarQube scanner tool
         DOCKERHUB_CREDENTIALS = credentials('1521bdc5-4c58-4549-a14f-b98c8da7b1dc') // Use the ID of your DockerHub credentials
-        NEXUS_CREDENTIALS = credentials('07c9f2c3-2374-4925-8ffd-06071b125a58') // Use the ID of your Nexus credentials
         DOCKERHUB_REPO = 'aymen1508/achat'
     }
 
@@ -47,7 +46,7 @@ pipeline {
         stage('Publish to Nexus') {
             steps {
                 // Publish the artifact to Nexus
-                withCredentials([usernamePassword(credentialsId: 'nexus-credentials', usernameVariable: 'NEXUS_USERNAME', passwordVariable: 'NEXUS_PASSWORD')]) {
+                withCredentials([usernamePassword(credentialsId: '07c9f2c3-2374-4925-8ffd-06071b125a58', usernameVariable: 'NEXUS_USERNAME', passwordVariable: 'NEXUS_PASSWORD')]) {
                     sh 'mvn deploy -DaltDeploymentRepository=nexus::default::http://host.docker.internal:8081/repository/maven-releases/ -Dnexus.username=$NEXUS_USERNAME -Dnexus.password=$NEXUS_PASSWORD'
                 }
             }
