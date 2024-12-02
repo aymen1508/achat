@@ -14,12 +14,12 @@ pipeline {
     }
 
     stages {
-        stage('Checkout') {
-            steps {
-                // Checkout code from Git repository
-                git 'https://github.com/aymen1508/achat'
-            }
-        }
+        // stage('Checkout') {
+        //     steps {
+        //         // Checkout code from Git repository
+        //         git credentialsId: 'd6ce1028-e78c-424b-9df1-ae1d644aa33a','https://github.com/aymen1508/achat'
+        //     }
+        // }
 
         stage('Clean') {
             steps {
@@ -39,7 +39,7 @@ pipeline {
             steps {
                 // Run SonarQube analysis
                 withSonarQubeEnv('sonar-base') { // Use the name of your SonarQube server instance
-                    sh "mvn sonar:sonar -Dsonar.projectKey=achat -Dsonar.projectName='achat' -Dsonar.host.url=http://sonarqube:9000"
+                    sh "mvn sonar:sonar -Dsonar.projectKey=achat -Dsonar.projectName='achat' -Dsonar.host.url=http://host.docker.internal:9000"
                 }
             }
         }
