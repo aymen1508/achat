@@ -39,7 +39,7 @@ pipeline {
             steps {
                 // Run SonarQube analysis
                 withSonarQubeEnv('sonar-base') { // Use the name of your SonarQube server instance
-                    sh "mvn sonar:sonar -Dsonar.projectKey=achat -Dsonar.projectName='achat' -Dsonar.host.url=http://host.docker.internal:9000"
+                    sh "mvn sonar:sonar -Dsonar.projectKey=achat -Dsonar.projectName='achat' -Dsonar.host.url=http://host.docker.internal:9000 -Dsonar.token=sqp_1a12dc0afb15e8b02aa2176a314f919d2ad51d53"
                 }
             }
         }
